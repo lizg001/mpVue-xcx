@@ -15,7 +15,7 @@ let config = {
 	/*
 	 * XMPP server
 	 */
-	xmppURL: "wss://im-api.easemob.com/ws/",
+	xmppURL: "wss://im-api-wechat.easemob.com/websocket",
 	// xmppURL: '172.17.3.122:5280',
 	/*
 	 * Backend REST API URL
@@ -32,7 +32,7 @@ let config = {
 	 * Whether to use HTTPS      '1177161227178308#xcx'
 	 * @parameter {Boolean} true or false
 	 */
-	https: false,
+	https: true,
 	/*
 	 * isMultiLoginSessions
 	 * true: A visitor can sign in to multiple webpages and receive messages at all the webpages.

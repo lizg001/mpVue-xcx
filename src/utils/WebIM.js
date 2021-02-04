@@ -1,6 +1,4 @@
-let Strophe = require("../sdk/libs/strophe");
-//import xmldom from "../sdk/libs/xmldom/dom-parser";
-let websdk = require("../sdk/connection");
+import websdk from "../sdk/wxsdk3.4.2";
 import config from "./WebIMConfig";
 
 console.group = console.group || {};
@@ -27,24 +25,21 @@ WebIM.isDebug = function(option){
 			return (Hours < 10 ? "0" + Hours : Hours) + ":" + (Minutes < 10 ? "0" + Minutes : Minutes) + ":" + (Seconds < 10 ? "0" + Seconds : Seconds) + " ";
 		}
 
-		Strophe.Strophe.log = function(level, msg){
-			// console.log(ts(), level, msg);
-		};
 
-		if (value) {
-			Strophe.Strophe.Connection.prototype.rawOutput = function(data){
-				try{
-					console.group("%csend # " + ts(), "color: blue; font-size: large");
-					console.log("%c" + data, "color: blue");
-					console.groupEnd();
-				}
-				catch(e){
-					console.log(e);
-				}
-			};
-		}else{
-			Strophe.Strophe.Connection.prototype.rawOutput = function(){};
-		}
+		// if (value) {
+		// 	Strophe.Strophe.Connection.prototype.rawOutput = function(data){
+		// 		try{
+		// 			console.group("%csend # " + ts(), "color: blue; font-size: large");
+		// 			console.log("%c" + data, "color: blue");
+		// 			console.groupEnd();
+		// 		}
+		// 		catch(e){
+		// 			console.log(e);
+		// 		}
+		// 	};
+		// }else{
+		// 	Strophe.Strophe.Connection.prototype.rawOutput = function(){};
+		// }
 		
 	}
 }
@@ -219,8 +214,9 @@ WebIM.EmojiObj = {
 // wx.connectSocket({url: WebIM.config.xmppURL, method: "GET"})
 
 WebIM.conn = new WebIM.connection({
+	appKey: WebIM.config.appkey,
 	isMultiLoginSessions: WebIM.config.isMultiLoginSessions,
-	https: typeof WebIM.config.https === "boolean" ? WebIM.config.https : location.protocol === "https:",
+	https: true,
 	url: WebIM.config.xmppURL,
 	apiUrl: WebIM.config.apiURL,
 	isAutoLogin: false,
