@@ -22,6 +22,9 @@ export default {
       onTextMessage: function(message) {
         console.log("文本消息：",message)
       }, //收到文本消息
+      onCmdMessage: function(message) {
+        console.log("透传消息",message)
+      }, //收到文本消息
       onEmojiMessage: function(message) {}, //收到表情消息
       onPictureMessage: function(message) {}, //收到图片消息
       onRoster: function(message) {}, //处理好友申请
